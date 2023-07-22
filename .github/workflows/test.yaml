@@ -24,6 +24,7 @@ jobs:
                   echo -e "hi\nhihi\nhi"
                   echo -e "hi\nhihi\nhi" >> tmp.tmp
                   echo -e "hi\nhihi\nhi"
+                  echo "labels=$(cat tmp.tmp)"
                   echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
