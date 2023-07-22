@@ -20,7 +20,10 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  echo "labels=$(cat /etc/apt/sources.list)" >> $GITHUB_OUTPUT
+                  echo "hi 
+                  hihi
+                  hi" >> tmp.tmp
+                  echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
               id: docker_build
