@@ -23,9 +23,30 @@ jobs:
                   echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
+              id: docker_build
+
               with:
                   push: true
                   tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
                   labels: ${{ steps.label.outputs.labels }}
-                  annotations: { "org.opencontainers.image.description": "DESCRIPTION" }
                   file: ./Dockerfile
+
+            - name: Get Docker metadata
+              id: docker_meta
+              run: |
+                echo "IMAGE_DIGEST=${{ steps.docker_build.outputs.digest }}" >> $GITHUB_OUTPUT
+
+            - name: Update Package Description
+              run: |
+                curl -X POST \
+                  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                  -H "GraphQL-Features: packages_beta" \
+                  -d '
+                  mutation { 
+                    updatePackageVersion(input:{packageVersionId:"${{ steps.docker_meta.outputs.IMAGE_DIGEST }}", description:"${{ steps.label.outputs.labels }}"}) { 
+                      packageVersion { 
+                        id 
+                      } 
+                    } 
+                  }' \
+                  https://api.github.com/graphql
