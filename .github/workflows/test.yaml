@@ -20,7 +20,8 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  echo $(ls -al) >> tmp.tmp
+                  echo $(ls -al)
+                  echo -e "hi\nhihi\nhi" >> tmp.tmp
                   echo "labels=$(cat tmp.tmp)"
                   echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
             - name: Build and push
@@ -42,13 +43,7 @@ jobs:
               run: |
                 curl -X POST \
                   -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                  -H "GraphQL-Features: packages_beta" \
-                  -d '
-                  mutation { 
-                    updatePackageVersion(input:{packageVersionId:"${{ steps.docker_meta.outputs.IMAGE_DIGEST }}", description:"${{ steps.label.outputs.labels }}"}) { 
-                      packageVersion { 
-                        id 
-                      } 
-                    } 
-                  }' \
+                  -H "Content-Type: application/json" \
+                  -H "Accept: application/vnd.github.packages-preview+json" \
+                  -d "{\"query\":\"mutation { updatePackageVersion(input:{packageVersionId:\\\"${{ steps.docker_meta.outputs.IMAGE_DIGEST }}\\\", description:\\\"${{ steps.label.outputs.labels }}\\\"}) { packageVersion { id } } }\"}" \
                   https://api.github.com/graphql
