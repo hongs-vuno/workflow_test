@@ -20,9 +20,7 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  echo "hi 
-                  hihi
-                  hi" >> tmp.tmp
+                  echo -e "hi\nhihi\nhi" >> tmp.tmp
                   echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
