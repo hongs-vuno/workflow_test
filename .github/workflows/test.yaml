@@ -25,6 +25,15 @@ jobs:
                   echo "labels<<$EOF" >> $GITHUB_OUTPUT
                   echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
+
+
+                  echo "labels<<$EOF" >> temp
+                  echo "org.opencontainers.image.description=$(cat tmp)" >> temp
+                  echo "$EOF" >> temp
+
+                  echo '-----'
+                  echo $(cat temp)
+                  echo '-----'
                   
             - name: Build and push
               uses: docker/build-push-action@v3
