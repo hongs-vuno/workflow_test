@@ -44,7 +44,7 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tag_name: v1
+                tag_name: v2
                 release_name: test_release
                 body: ${{ steps.label.outputs.labels}}
                 draft: false
