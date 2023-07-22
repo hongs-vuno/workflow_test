@@ -20,9 +20,12 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  # echo $(ls -al) >> tmp.tmp
-                  # echo "labels=$(cat tmp.tmp)"
-                  # echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
+                  MY_STRING=$(echo $(ls -al))
+                  MY_STRING="${MY_STRING//'%'/'%25'}"
+                  MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+                  MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+
+                  # echo "labels=$MY_STRING" >> $GITHUB_OUTPUT
                   echo "labels=org.opencontainers.image.description=## Hello, World! \n --- \n hihi" >> $GITHUB_OUTPUT
                   
             - name: Build and push
