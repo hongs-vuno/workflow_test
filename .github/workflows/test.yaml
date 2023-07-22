@@ -55,11 +55,11 @@ jobs:
                 release_name: test_release
                 body: | 
                   ### ImageID
-                  - ${{ steps.docker_build.outputs.imageid}
+                  - ${{ steps.docker_build.outputs.imageid}}
                   ### DIGEST
-                  - ${{ steps.docker_build.outputs.digest}
+                  - ${{ steps.docker_build.outputs.digest}}
                   ### Build result metadata
-                  - ${{ steps.docker_build.outputs.metadata}
+                  - ${{ steps.docker_build.outputs.metadata}}
                   ### Performance
                   - ${{ steps.label.outputs.labels}}
 
