@@ -20,6 +20,8 @@ jobs:
             - name: labeler
               id: label
               run: |
+                  echo $(ls -al)
+                  echo -e "hi\nhihi\nhi"
                   echo -e "hi\nhihi\nhi" >> tmp.tmp
                   echo "labels=$(cat tmp.tmp)" >> $GITHUB_OUTPUT
             - name: Build and push
