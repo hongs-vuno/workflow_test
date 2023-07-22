@@ -26,4 +26,3 @@ jobs:
                   tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
                   labels: ${{ steps.performance.outputs.labels }}
                   file: ./Dockerfile
-                  tags: ghcr.io/vuno/fundus-ci-one:dev
