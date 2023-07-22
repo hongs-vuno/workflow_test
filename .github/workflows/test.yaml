@@ -20,7 +20,7 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  MY_STRING=$(echo "hihi\nhi\nh%0Ahi%0Ah")
+                  MY_STRING=$(echo "hihi\nhi\nhi")
                   echo "labels=org.opencontainers.image.description<<\n" >> 
                   # echo $(ls -alth) >> $GITHUB_OUTPUT
                   echo "$MY_STRING" >> $GITHUB_OUTPUT
