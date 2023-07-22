@@ -4,6 +4,7 @@ on:
     workflow_dispatch:
 jobs:
     build_dev_image:
+        runs-on: ubuntu-latest
         name: Build test-image:test-version
         steps:
             - name: Checkout
