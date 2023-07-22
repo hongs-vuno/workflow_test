@@ -21,7 +21,7 @@ jobs:
               id: label
               run: |
                   # echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
-                  echo "labels=A={'a': 'asdf', 'b':'asdf'}" >> $GITHUB_OUTPUT
+                  echo "labels=A={'a': 'asdf', 'b':'asdf'}, B=asdfasdf" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
               with:
