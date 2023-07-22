@@ -20,7 +20,7 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  MY_STRING=$(echo $(ls -al))
+                  MY_STRING=$(echo 'hihi\nhi\nh')
                   MY_STRING="${MY_STRING//'%'/'%25'}"
                   MY_STRING="${MY_STRING//$'\n'/'%0A'}"
                   MY_STRING="${MY_STRING//$'\r'/'%0D'}"
