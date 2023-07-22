@@ -35,6 +35,17 @@ jobs:
                   echo $(cat temp)
                   echo '-----'
                   
+            - name: Create GitHub release
+              if: steps.version-check.outputs.new-version
+              uses: actions/create-release@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                tag_name: v1
+                release_name: test_release
+                body: ${{ steps.label.outputs.labels}}
+                draft: false
+                prerelease: false
             - name: Build and push
               uses: docker/build-push-action@v3
               id: docker_build
