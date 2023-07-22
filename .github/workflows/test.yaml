@@ -18,6 +18,7 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ github.token }}
             - name: labeler
+              id: label
               run: |
                   echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
             - name: Build and push
@@ -25,5 +26,5 @@ jobs:
               with:
                   push: true
                   tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
-                  labels: ${{ steps.labeler.outputs.labels }}
+                  labels: ${{ steps.label.outputs.labels }}
                   file: ./Dockerfile
