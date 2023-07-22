@@ -31,12 +31,8 @@ jobs:
                   echo "$EOF" >> $GITHUB_OUTPUT
 
 
-                  echo "labels<<$EOF" >> temp
-                  echo "org.opencontainers.image.description=$(cat tmp)" >> temp
-                  echo "$EOF" >> temp
-
                   echo '-----'
-                  echo $(cat temp)
+                  echo $(cat tmp)
                   echo '-----'
                   
             - name: Create GitHub release
