@@ -25,5 +25,5 @@ jobs:
               with:
                   push: true
                   tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
-                  labels: ${{ steps.performance.outputs.labels }}
+                  labels: ${{ steps.labeler.outputs.labels }}
                   file: ./Dockerfile
