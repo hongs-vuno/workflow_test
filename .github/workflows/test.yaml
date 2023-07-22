@@ -20,12 +20,12 @@ jobs:
             - name: labeler
               id: label
               run: |
-                  # echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
-                  echo "labels=A={'a': 'asdf', 'b':'asdf'}, B=asdfasdf" >> $GITHUB_OUTPUT
+                  echo "labels=$(cat ~/.bashrc)" >> $GITHUB_OUTPUT
             - name: Build and push
               uses: docker/build-push-action@v3
               with:
                   push: true
                   tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
                   labels: ${{ steps.label.outputs.labels }}
+                  annotations: { "org.opencontainers.image.description": "DESCRIPTION" }
                   file: ./Dockerfile
