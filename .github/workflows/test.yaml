@@ -31,7 +31,7 @@ jobs:
                   echo $(cat tmp)
                   echo '-----'
 
-            - name: Build and push
+            - name: Build 
               uses: docker/build-push-action@v3
               id: docker_build
 
