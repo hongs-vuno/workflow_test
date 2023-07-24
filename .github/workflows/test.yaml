@@ -76,6 +76,6 @@ jobs:
               with: 
                 push: true
                 tags: ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.versions.outputs.version}}
-                labels: ${{ steps.versions.outputs.labels }}
+                labels: ${{ steps.label.outputs.labels }}
                 file: ./Dockerfile
                 # cache-from: type=local,src=/tmp/docker-build-cache
