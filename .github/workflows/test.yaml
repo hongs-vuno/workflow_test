@@ -51,7 +51,7 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tag_name: v4
+                tag_name: v5
                 release_name: test_release
                 body: | 
                   ### Install from the command line:
@@ -66,7 +66,5 @@ jobs:
                   - ${{ steps.label.outputs.labels}}
                   ### Build result metadata
                   - ${{ steps.docker_build.outputs.metadata}}
-                allowUpdates: true
-                # updateOnlyUnreleased: true
                 # draft: true
                 prerelease: true
