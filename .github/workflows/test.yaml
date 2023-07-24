@@ -30,7 +30,7 @@ jobs:
                   echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
 
-
+                  echo version=v6 >> $GITHUB_OUTPUT
                   echo '-----'
                   echo $(cat tmp)
                   echo '-----'
@@ -41,7 +41,7 @@ jobs:
 
               with:
                   push: true
-                  tags: ghcr.io/hongs-vuno/workflow_test/test-image:test-version
+                  tags: ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.label.outputs.version}}
                   labels: ${{ steps.label.outputs.labels }}
                   file: ./Dockerfile
 
@@ -51,9 +51,11 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                tag_name: v5
+                tag_name: ${{ steps.label.outputs.version}}
                 release_name: test_release
                 body: | 
+                  ### Link to ghcr image
+                  - [test-image:${{ steps.label.outputs.version}}](ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.label.outputs.version}})
                   ### Install from the command line:
                   ```bash
                   $ docker pull ghcr.io/hongs-vuno/workflow_test/test-image@${{ steps.docker_build.outputs.digest }}
