@@ -37,8 +37,8 @@ jobs:
 
               with:
                   load: true
-                  tags: ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.label.outputs.version}}
-                  labels: ${{ steps.label.outputs.labels }}
+                  tags: ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.label.outputs.version}}_test
+                  # labels: ${{ steps.label.outputs.labels }}
                   file: ./Dockerfile
 
                   
