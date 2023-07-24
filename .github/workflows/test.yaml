@@ -26,7 +26,7 @@ jobs:
                   echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
 
-                  echo version=v6.04 >> $GITHUB_OUTPUT
+                  echo version=v6.05 >> $GITHUB_OUTPUT
                   echo '-----'
                   echo $(cat tmp)
                   echo '-----'
