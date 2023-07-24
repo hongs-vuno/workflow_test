@@ -20,7 +20,7 @@ jobs:
             - name: version check
               id: versions
               run: | 
-                  echo version=v6.062 >> $GITHUB_OUTPUT
+                  echo version=v6.063 >> $GITHUB_OUTPUT
             - name: labeler
               id: label
               run: |
