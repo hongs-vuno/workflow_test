@@ -21,8 +21,7 @@ jobs:
               run: |
                 if git show-ref --tags --verify --quiet "refs/tags/${{ steps.versions.outputs.version }}"; then
                   echo tag_exists=true >> $GITHUB_OUTPUT
-                  echo "The tag '${{ steps.versions.outputs.version }}' already exists."
-                  exit 1
+                  echo "::error::The tag '${{ steps.versions.outputs.version }}' already exists."
                 else
                   echo tag_exists=false >> $GITHUB_OUTPUT
 
