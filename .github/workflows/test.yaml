@@ -54,14 +54,18 @@ jobs:
                 tag_name: v4
                 release_name: test_release
                 body: | 
-                  ### ImageID
-                  - ${{ steps.docker_build.outputs.imageid}}
-                  ### DIGEST
-                  - ${{ steps.docker_build.outputs.digest}}
-                  ### Build result metadata
-                  - ${{ steps.docker_build.outputs.metadata}}
+                  ### Install from the command line:
+                  ```bash
+                  $ docker pull ghcr.io/hongs-vuno/workflow_test/test-image@${{ steps.docker_build.outputs.digest }}
+                  ```
+                  ### Use as base image in Dockerfile:
+                  ```bash
+                  FROM ghcr.io/hongs-vuno/workflow_test/test-image@${{ steps.docker_build.outputs.digest }}
+                  ```
                   ### Performance
                   - ${{ steps.label.outputs.labels}}
+                  ### Build result metadata
+                  - ${{ steps.docker_build.outputs.metadata}}
                 allowUpdates: true
                 updateOnlyUnreleased: true
                 draft: false
