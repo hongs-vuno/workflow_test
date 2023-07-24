@@ -67,6 +67,6 @@ jobs:
                   ### Build result metadata
                   - ${{ steps.docker_build.outputs.metadata}}
                 allowUpdates: true
-                updateOnlyUnreleased: true
-                draft: false
+                # updateOnlyUnreleased: true
+                # draft: true
                 prerelease: true
