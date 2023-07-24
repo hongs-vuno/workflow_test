@@ -26,7 +26,7 @@ jobs:
                   echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
 
-                  echo version=v6.03 >> $GITHUB_OUTPUT
+                  echo version=v6.04 >> $GITHUB_OUTPUT
                   echo '-----'
                   echo $(cat tmp)
                   echo '-----'
@@ -74,4 +74,4 @@ jobs:
                 tags: ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.label.outputs.version}}
                 labels: ${{ steps.label.outputs.labels }}
                 file: ./Dockerfile
-                cache-from: type=local,src=/tmp/docker-build-cache
+                # cache-from: type=local,src=/tmp/docker-build-cache
