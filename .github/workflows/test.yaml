@@ -26,11 +26,10 @@ jobs:
                   echo '$(ls -alth)' >> tmp
                   ls -alth >> tmp
                   EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-                  # echo "labels<<$EOF" >> $GITHUB_OUTPUT
-                  # echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
-                  # echo "$EOF" >> $GITHUB_OUTPUT
+                  echo "labels<<$EOF" >> $GITHUB_OUTPUT
+                  echo "org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
+                  echo "$EOF" >> $GITHUB_OUTPUT
 
-                  echo "labels=org.opencontainers.image.description=$(cat tmp)" >> $GITHUB_OUTPUT
 
                   echo '-----'
                   echo $(cat tmp)
