@@ -28,8 +28,10 @@ jobs:
                 fi
 
             - name: Set up Docker Buildx
+              if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} 
               uses: docker/setup-buildx-action@v2
             - name: Login to ghcr
+              if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} 
               uses: docker/login-action@v2
               with:
                   registry: ghcr.io
@@ -88,7 +90,7 @@ jobs:
                 # draft: true
                 prerelease: true
             - name: Push Docker image
-              if: success() && (${{ steps.check_tag.outputs.tag_exists == 'false' }})
+              if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} && success()
               uses: docker/build-push-action@v3
               with: 
                 push: true
