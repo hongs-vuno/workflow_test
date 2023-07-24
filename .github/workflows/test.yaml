@@ -14,18 +14,21 @@ jobs:
             - name: version check
               id: versions
               run: | 
-                  echo version=v6.064 >> $GITHUB_OUTPUT
+                  echo version=v6.065 >> $GITHUB_OUTPUT
 
             - name: release validator
               id: check_tag
               run: |
                 if git show-ref --tags --verify --quiet "refs/tags/${{ steps.versions.outputs.version }}"; then
-                  echo tag_exists=true
                   echo tag_exists=true >> $GITHUB_OUTPUT
+                  echo "The tag '${{ steps.versions.outputs.version }}' already exists."
+                  exit 1
                 else
-                  echo tag_exists=false
                   echo tag_exists=false >> $GITHUB_OUTPUT
+
                 fi
+
+            
 
             - name: Set up Docker Buildx
               if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} 
