@@ -62,6 +62,7 @@ jobs:
                   - ${{ steps.docker_build.outputs.metadata}}
                   ### Performance
                   - ${{ steps.label.outputs.labels}}
-
+                allowUpdates: true
+                updateOnlyUnreleased: true
                 draft: false
-                prerelease: false
+                prerelease: true
