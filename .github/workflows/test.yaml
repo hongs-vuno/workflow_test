@@ -90,7 +90,7 @@ jobs:
                 # draft: true
                 prerelease: true
             - name: Push Docker image
-              if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} && success()
+              if: ${{ steps.check_tag.outputs.tag_exists == 'false' }} #&& success()
               uses: docker/build-push-action@v3
               with: 
                 push: true
