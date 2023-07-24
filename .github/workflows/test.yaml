@@ -20,7 +20,7 @@ jobs:
             - name: version check
               id: versions
               run: | 
-                  echo version=v6.063 >> $GITHUB_OUTPUT
+                  echo version=v6.064 >> $GITHUB_OUTPUT
             - name: labeler
               id: label
               run: |
@@ -28,7 +28,7 @@ jobs:
                   EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
                   echo "labels<<$EOF" >> $GITHUB_OUTPUT
                   echo "performance=$(cat tmp)" >> $GITHUB_OUTPUT
-                  echo "org.opencontainers.image.description=FAI Finding API Release note: https://github.com/hongs-vuno/workflow_test/releases/tag/${{ steps.versions.output.version }}" >> $GITHUB_OUTPUT
+                  echo "org.opencontainers.image.description=FAI Finding API Release note: https://github.com/hongs-vuno/workflow_test/releases/tag/${{ steps.versions.outputs.version }}" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
 
                   echo '-----'
