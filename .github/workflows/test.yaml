@@ -17,7 +17,7 @@ jobs:
             - name: release validator
               id: check_tag
               run: |
-                if git rev-parse "${{ steps.versions.outputs.version }}" >/dev/null 2>&1; then
+                if git show-ref --tags --verify --quiet "refs/tags/${{ steps.versions.outputs.version }}"; then
                   echo tag_exists=true
                   echo tag_exists=true >> $GITHUB_OUTPUT
                 else
