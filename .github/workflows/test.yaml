@@ -26,9 +26,11 @@ jobs:
               id: check_tag
               run: |
                 if git rev-parse "${{ steps.versions.outputs.version }}" >/dev/null 2>&1; then
-                  echo "::set-output name=tag_exists::true"
+                  echo "name=tag_exists::true"
+                  echo "name=tag_exists::true" >> $GITHUB_OUTPUT
                 else
-                  echo "::set-output name=tag_exists::false"
+                  echo "name=tag_exists::false"
+                  echo "name=tag_exists::false" >> $GITHUB_OUTPUT
                 fi
 
             - name: Build 
