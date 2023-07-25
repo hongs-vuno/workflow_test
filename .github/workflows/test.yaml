@@ -14,7 +14,7 @@ jobs:
             - name: version check
               id: versions
               run: | 
-                  echo version=v6.076 >> $GITHUB_OUTPUT
+                  echo version=v6.078 >> $GITHUB_OUTPUT
 
             - name: release validator
               id: check_tag
