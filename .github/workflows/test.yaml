@@ -57,7 +57,11 @@ jobs:
                   echo "performance=$(cat tmp)" >> $GITHUB_OUTPUT
                   echo "org.opencontainers.image.description=FAI Finding API Release note: https://github.com/hongs-vuno/workflow_test/releases/tag/${{ steps.versions.outputs.version }}" >> $GITHUB_OUTPUT
                   echo "$EOF" >> $GITHUB_OUTPUT
-                  echo "performance=$(cat tmp_indent)" >> $GITHUB_OUTPUT
+
+                  EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+                  echo "performance<<$EOF" >> $GITHUB_OUTPUT
+                  echo "$(cat tmp_indent)" >> $GITHUB_OUTPUT
+                  echo "$EOF" >> $GITHUB_OUTPUT
 
                   echo '-----'
                   echo $(cat tmp_indent)
