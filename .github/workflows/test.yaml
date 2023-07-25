@@ -14,7 +14,7 @@ jobs:
             - name: version check
               id: versions
               run: | 
-                  echo version=v6.066 >> $GITHUB_OUTPUT
+                  echo version=v6.067 >> $GITHUB_OUTPUT
 
             - name: release validator
               id: check_tag
@@ -64,7 +64,7 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 tag_name: ${{ steps.versions.outputs.version}}
-                release_name: test_release
+                release_name: release/test_release
                 body: | 
                   ### Link to ghcr image
                   - [test-image:${{ steps.versions.outputs.version}}](https://ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.versions.outputs.version}})
