@@ -88,9 +88,13 @@ jobs:
                   FROM ghcr.io/hongs-vuno/workflow_test/test-image:${{ steps.versions.outputs.version }}
                   ```
                   ### Performance
-                  - ${{ steps.label.outputs.performance}}
+                  ```json
+                  ${{ steps.label.outputs.performance}}
+                  ```
                   ### Build result metadata
-                  - ${{ steps.docker_build.outputs.metadata}}
+                  ```json
+                  ${{ steps.docker_build.outputs.metadata}}
+                  ```
                 # draft: true
                 prerelease: true
             - name: Push Docker image
